@@ -1,7 +1,0 @@
-services:
-  artifact:
-    image: ear:latest
-    ports:
-      - "8443:443"
-    volumes:
-      - ./certs/:/usr/share/nginx/certs/:ro

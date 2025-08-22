@@ -20,6 +20,15 @@ do
         curl https://artifacts.elastic.co/downloads/beats/$app-$version-$platform-x86_64.$file --create-dirs --output downloads/beats/$app-$version-$platform-x86_64.$file
         curl https://artifacts.elastic.co/downloads/beats/$app-$version-$platform-x86_64.$file.sha512 --create-dirs --output downloads/beats/$app-$version-$platform-x86_64.$file.sha512
         curl https://artifacts.elastic.co/downloads/beats/$app-$version-$platform-x86_64.$file.asc --create-dirs --output downloads/beats/$app-$version-$platform-x86_64.$file.asc
+
+        if [ "${app}" == "elastic-agent/elastic-agent" ]
+          then
+            echo "elastic-agent.msi: $platform + $version"
+            file=msi
+            curl https://artifacts.elastic.co/downloads/beats/$app-$version-$platform-x86_64.$file --create-dirs --output downloads/beats/$app-$version-$platform-x86_64.$file
+            curl https://artifacts.elastic.co/downloads/beats/$app-$version-$platform-x86_64.$file.sha512 --create-dirs --output downloads/beats/$app-$version-$platform-x86_64.$file.sha512
+            curl https://artifacts.elastic.co/downloads/beats/$app-$version-$platform-x86_64.$file.asc --create-dirs --output downloads/beats/$app-$version-$platform-x86_64.$file.asc
+        fi
         continue  # read next file and skip the cp command
       done
       for artifact_type in "${artifact_type[@]}"
